@@ -62,6 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <div class="dashboard">
+        <a href='../../index.php' class='btn btn-primary'>Go back to dashboard!</a>
+    </div>
     <div class='heading'>
         <p>This game is a guessing game, you have choices 1-10. If you choose the same outcome as the computer, then
             you win!</p>
