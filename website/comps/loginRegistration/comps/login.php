@@ -47,7 +47,8 @@ if (isset($_SESSION['user'])) {
                 <input type="text" name="email" placeholder="Email address" class="form-control">
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Password" class="form-control">
+                <input type="password" name="password" placeholder="Password" class="form-control" id='passwordField'>
+                <span toggle='#passwordField' class='password-toggle-btn'>Show</span>
             </div>
             <div class="form-btn">
                 <input type="submit" value="Login" name="login" class="btn btn-primary">
@@ -57,6 +58,16 @@ if (isset($_SESSION['user'])) {
             <p>Not registered yet? <a href="registration.php">Register here!</a></p>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const togglePassword = document.querySelector('.password-toggle-btn');
+            togglePassword.addEventListener('click', function () {
+                const passwordField = document.querySelector(this.getAttribute('toggle'));
+                this.textContent = passwordField.type === 'password' ? "Hide" : "Show";
+                passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+            })
+        })
+    </script>
 </body>
 
 </html>

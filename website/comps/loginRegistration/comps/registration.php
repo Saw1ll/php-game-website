@@ -44,7 +44,7 @@ if (isset($_SESSION['user'])) {
             if (!ctype_alpha($fName) || !ctype_alpha($lName)) {
                 array_push($errors, "Ensure you've typed your name correctly.");
             }
-            if (strlen($fName >= 3) && strlen($lName >= 3)) {
+            if ((strlen($fName) >= 3) && (strlen($lName) >= 3)) {
                 $fullName = "$fName $lName";
             } else {
                 array_push($errors, "Ensure you've typed both your first and last names.");
@@ -97,12 +97,14 @@ if (isset($_SESSION['user'])) {
                 <input type="text" class="form-control" name="email" placeholder="Email">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input class="form-control password-field" type="password" name="password" placeholder="Password">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="cfPassword" placeholder="Confirm Password">
+                <input class="form-control password-field" type="password" name="cfPassword"
+                    placeholder="Confirm Password">
             </div>
             <div class="form-btn">
+                <span class='password-toggle-btn btn btn-secondary' toggle='.password-field'>Show password input</span>
                 <input type="submit" class="btn btn-primary" value="Register" name="submit">
             </div>
         </form>
@@ -110,6 +112,18 @@ if (isset($_SESSION['user'])) {
             <p>Already have an account? <a href="login.php">Login here!</a></p>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const togglePassword = document.querySelector('.password-toggle-btn');
+            togglePassword.addEventListener('click', function () {
+                const passwordFields = document.querySelectorAll(this.getAttribute('toggle'));
+                passwordFields.forEach(function (field) {
+                    field.type = field.type === 'password' ? 'text' : 'password';
+                })
+                this.textContent = passwordFields[0].type === 'password' ? "Show password input" : "Hide password input";
+            })
+        })
+    </script>
 </body>
 
 </html>
