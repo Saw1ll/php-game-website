@@ -41,7 +41,7 @@
     }
     ?>
   </div>
-  <form method="post" action="randomuser.php" required>
+  <form method="post" action="information.php" required>
     <select name='information'>
       <option value='gender'>Gender</option>
       <option value="address">Address</option>
