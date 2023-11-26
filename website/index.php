@@ -2,7 +2,7 @@
 // if user login isn't cached, user will be sent to login screen
 session_start();
 if (!isset($_SESSION['user'])) {
-    header("Location: comps/loginRegistration/login.php");
+    header("Location: comps/loginRegistration/pages/login.php");
 }
 function generateCards($cardData)
 {
@@ -58,7 +58,7 @@ $cards2HTML = generateCards($cards2);
                 </ul>
             </div>
         </div>
-        <a href="comps/logout.php" class='btn btn-warning'>Log out</a>
+        <a href="comps/loginRegistration/comps/logout.php" class='btn btn-warning'>Log out</a>
     </div>
 </body>
 

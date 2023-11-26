@@ -2,7 +2,7 @@
 // if user login is cached, user will be sent to dashboard
 session_start();
 if (isset($_SESSION['user'])) {
-    header("Location: index.php");
+    header("Location: website/index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ if (isset($_SESSION['user'])) {
     <title>Login Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
 </head>
 
 <body>
@@ -25,13 +25,12 @@ if (isset($_SESSION['user'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            require_once "comps/database.php";
+            require_once "../comps/database.php";
             // prepared sql statement
             $sql = "SELECT * FROM logins WHERE email = '$email'";
             $result = mysqli_query($connect, $sql);
             $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            if ($result->num_rows === 1) {
-                $user = $result->fetch_assoc();
+            if ($user) {
                 if (password_verify($password, $user['password'])) {
                     $_SESSION['user'] = "yes";
                     header("Location: ../../../index.php");
@@ -61,7 +60,7 @@ if (isset($_SESSION['user'])) {
         </div>
     </div>
     <script>
-        <?php require_once "comps/hideshowpw.php"; ?>
+        <?php require_once "../comps/hideshowpw.php"; ?>
     </script>
 </body>
 
