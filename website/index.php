@@ -2,7 +2,7 @@
 // if user login isn't cached, user will be sent to login screen
 session_start();
 if (!isset($_SESSION['user'])) {
-    header("Location: comps/loginRegistration/comps/login.php");
+    header("Location: comps/loginRegistration/login.php");
 }
 function generateCards($cardData)
 {
