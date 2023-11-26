@@ -1,40 +1,39 @@
 body {
-    padding: 50px;
+  padding: 50px;
 }
 
 .container {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 50px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 50px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .form-group {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .form {
-
 }
 .form__input {
 }
 
 .message_error {
-    border: 1px;
-    color: red;
+  border: 1px;
+  color: red;
 }
 
 .stats {
-    border: 1px;
-    width: 100%;
+  border: 1px;
+  width: 100%;
 }
 
 .stats__text {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .outcome__text {
-    font-size: 1.3rem;
-    font-weight: 800;
+  font-size: 1.3rem;
+  font-weight: 800;
 }

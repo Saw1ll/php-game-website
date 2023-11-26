@@ -16,7 +16,7 @@ if (isset($_SESSION['user'])) {
     <title>Registration Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
 </head>
 
 <body>
@@ -59,7 +59,7 @@ if (isset($_SESSION['user'])) {
                 array_push($errors, "Please check your confirmation of password.");
             }
 
-            require_once "database.php";
+            require_once "comps/database.php";
             $sql = "SELECT * FROM logins WHERE email = '$email'";
             $result = mysqli_query($connect, $sql);
             $rowCount = mysqli_num_rows($result);
@@ -113,16 +113,7 @@ if (isset($_SESSION['user'])) {
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const togglePassword = document.querySelector('.password-toggle-btn');
-            togglePassword.addEventListener('click', function () {
-                const passwordFields = document.querySelectorAll(this.getAttribute('toggle'));
-                passwordFields.forEach(function (field) {
-                    field.type = field.type === 'password' ? 'text' : 'password';
-                })
-                this.textContent = passwordFields[0].type === 'password' ? "Show password input" : "Hide password input";
-            })
-        })
+        <?php require_once "comps/hideshowpw.php"; ?>
     </script>
 </body>
 
