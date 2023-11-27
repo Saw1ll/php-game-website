@@ -13,8 +13,7 @@ if (isset($_SESSION['user'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
     <link rel="stylesheet" href="../../../css/styles.css">
 </head>
 
@@ -52,12 +51,10 @@ if (isset($_SESSION['user'])) {
             </div>
             <div class="form-btn">
                 <span class='password-toggle-btn btn btn-secondary' toggle='.password-field'>Show password input</span>
-                <input type="submit" value="Login" name="login" class="btn btn-primary">
+                <input type="submit" value="Login" name="login" class="btn btn-primary" />
+                <h5>Not registered yet? <a href="registration.php">Register here!</a></h5>
             </div>
         </form>
-        <div>
-            <p>Not registered yet? <a href="registration.php">Register here!</a></p>
-        </div>
     </div>
     <script>
         <?php require_once "../comps/hideshowpw.php"; ?>

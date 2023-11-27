@@ -14,8 +14,7 @@ if (isset($_SESSION['user'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
     <link rel="stylesheet" href="../../../css/styles.css">
 </head>
 
@@ -39,14 +38,18 @@ if (isset($_SESSION['user'])) {
             if (empty($fName) || empty($lName) || empty($email) || empty($password) || empty($cfPassword)) {
                 array_push($errors, "All fields are required");
             }
+            // ucfirst capitalises the string, then preg_replace removes any whitespace from 
+            // the initial capture in the 'First Name' and 'Last Name' input fields
             $fName = ucfirst(preg_replace('/\s/', '', $fName));
             $lName = ucfirst(preg_replace('/\s/', '', $lName));
+            // if there is not only alphabetical characters, give an error
             if (!ctype_alpha($fName) || !ctype_alpha($lName)) {
                 array_push($errors, "Ensure you've typed your name correctly.");
             }
             if ((strlen($fName) >= 3) && (strlen($lName) >= 3)) {
                 $fullName = "$fName $lName";
             } else {
+                // if first and/or last name are less than three characters long, give an error. 
                 array_push($errors, "Ensure you've typed both your first and last names.");
             }
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -87,30 +90,33 @@ if (isset($_SESSION['user'])) {
         }
         ?>
         <form action="registration.php" method="post">
-            <div class="form-group">
-                <input type="text" class="form-control" name="fName" placeholder="First Name">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="lName" placeholder="Last Name">
+            <div class="form-group row">
+                <div class="col">
+                    <input type="text" class="form-control" name="fName" placeholder="First Name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="lName" placeholder="Last Name">
+                </div>
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" name="email" placeholder="Email">
             </div>
-            <div class="form-group">
-                <input class="form-control password-field" type="password" name="password" placeholder="Password">
+            <div class="form-group row">
+                <div class="col">
+                    <input class="form-control password-field" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="col">
+                    <input class="form-control password-field" type="password" name="cfPassword"
+                        placeholder="Confirm Password">
+                </div>
             </div>
             <div class="form-group">
-                <input class="form-control password-field" type="password" name="cfPassword"
-                    placeholder="Confirm Password">
-            </div>
-            <div class="form-btn">
-                <span class='password-toggle-btn btn btn-secondary' toggle='.password-field'>Show password input</span>
+                <span class='password-toggle-btn btn btn-secondary' toggle='.password-field'>Show password
+                    input</span>
                 <input type="submit" class="btn btn-primary" value="Register" name="submit">
+                <h5>Already have an account? <a href="login.php">Login here!</a></h5>
             </div>
         </form>
-        <div>
-            <p>Already have an account? <a href="login.php">Login here!</a></p>
-        </div>
     </div>
     <script>
         <?php require_once "../comps/hideshowpw.php"; ?>
