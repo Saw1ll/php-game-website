@@ -15,6 +15,7 @@
     <div class="dashboard">
         <a href='../../index.php' class='btn btn-secondary'>Go back to dashboard!</a>
     </div>
+    <br>
     <div class="container">
         <div class="title">
             <h2>Random Name Generator</h3>
@@ -36,13 +37,13 @@
                     <option value="us">American</option>
                     <option value="au">Australian</option>
                     <option value="br">Brazillian</option>
+                    <option value="gb">British</option>
                     <option value="ca">Canadian</option>
                     <option value="da">Danish</option>
                     <option value="nl">Dutch</option>
                     <option value="fi">Finnish</option>
                     <option value="fr">French</option>
                     <option value="de">German</option>
-                    <option value="gb">British</option>
                     <option value="ie">Irish</option>
                     <option value="nz">New Zealander</option>
                     <option value="es">Spanish</option>
