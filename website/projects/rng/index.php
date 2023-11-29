@@ -26,7 +26,7 @@
             <h4>Let's get started,</h4>
         </div>
         <div class="questions">
-            <form method="post" action="./comps/randomuser.php">
+            <form method="post" action="./pages/randomuser.php">
                 <label for="amount">How many names would you like to generate? (Max 250)</label>
                 <input type="number" name='amount' min='1' max='250' id="amount" required>
                 <br><br>

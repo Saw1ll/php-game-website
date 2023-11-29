@@ -1,3 +1,11 @@
+<?php
+if (isset($_POST['nationality']) && isset($_POST['amount'])) {
+  session_start();
+  $_SESSION['current_url'] = $_SERVER['REQUEST_URI'];
+} else {
+  header("Location: ../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +19,21 @@
 </head>
 
 <body>
-  <div class="dashboard">
-    <a href='../../index.php' class='btn btn-secondary'>Go back to dashboard!</a>
+  <div class="redirects">
+    <a href='/website/index.php' class='btn btn-secondary'>Go back to dashboard!</a>
+    <a href="/website/projects/rng/index.php" class='btn btn-secondary'>Go back to start of RNG</a>
+    <a onclick="goBack()" class='btn btn-warning'>Go back one page</a>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
   </div>
   <div class="container">
     <?php
     $nationality = isset($_POST['nationality']) ? $_POST['nationality'] : "";
     $amount = isset($_POST['amount']) ? $_POST['amount'] : "";
+    $_SESSION['amount'] = $_POST['amount'];
     $information = isset($_POST['information']) ? $_POST['information'] : "";
     $nationalities = ['algerian', 'ag', 'american', 'us', 'australian', 'au', 'brazilian', 'br', 'canadian', 'ca', 'danish', 'da', 'dutch', 'nl', 'finnish', 'fi', 'french', 'fr', 'german', 'de', 'british', 'gb', 'irish', 'ie', 'new zealander', 'nz', 'spanish', 'es', 'swiss', 'ch', 'turkish', 'tr'];
     if ($nationality != "no") {
@@ -36,6 +52,7 @@
 
     $user_response = file_get_contents("https://randomuser.me/api/?nat=$nationality&results=$amount&format=json");
     $data_array = json_decode($user_response, true);
+    $_SESSION['data_array'] = $data_array;
     ?>
     <div class="names_container">
       <?php
