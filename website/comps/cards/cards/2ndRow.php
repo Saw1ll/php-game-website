@@ -7,5 +7,11 @@ $cards2 =
             'label' => 'Game',
             'path' => './projects/magic8Ball/magic8Ball.php'
         ],
+        [
+            'src' => 'images/427aba783806afea2075670ad99328be.jpg',
+            'text' => 'Guess The Number!',
+            'label' => 'Game',
+            'path' => './projects/guessTheNumber/guessTheNumber.php'
+        ]
     ]
-    ?>
+?>

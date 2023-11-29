@@ -2,7 +2,7 @@
 // if user login isn't cached, user will be sent to login screen
 session_start();
 if (!isset($_SESSION['user'])) {
-    header("Location: comps/loginRegistration/comps/login.php");
+    header("Location: comps/loginRegistration/pages/login.php");
 }
 function generateCards($cardData)
 {
@@ -33,9 +33,8 @@ $cards2HTML = generateCards($cards2);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BootstrapCDN css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="comps/loginRegistration/css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="comps/cards/css/cards.css">
     <title>User Dashboard</title>
 
@@ -58,7 +57,7 @@ $cards2HTML = generateCards($cards2);
                 </ul>
             </div>
         </div>
-        <a href="comps/logout.php" class='btn btn-warning'>Log out</a>
+        <a href="comps/loginRegistration/comps/logout.php" class='btn btn-warning'>Log out</a>
     </div>
 </body>
 
