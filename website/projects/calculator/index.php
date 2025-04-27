@@ -1,14 +1,14 @@
 <?php
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+error_reporting(error_level: E_ALL);
+ini_set(option: 'display_errors', value: 1);
 
 
 // Function to calculate the result or set an error message
 $result = null;
-function calculate($num01, $oper, $num02)
+function calculate($num01, $oper, $num02): mixed
 {
-    if (is_numeric($num01) && is_numeric($num02)) {
+    if (is_numeric(value: $num01) && is_numeric(value: $num02)) {
         switch ($oper) {
             case "add":
                 return $num01 + $num02;
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <a href='../../index.php' class='btn btn-primary'>Go back to dashboard!</a>
     </div>
     <br>
-    <form method='get' action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+    <form method='get' action="<?php echo htmlspecialchars(string: $_SERVER['PHP_SELF']); ?>">
         First Number: <input type='number' name='num01' minlength="1" required>
         <select name='oper'>
             <label for="Choose operation"></label>

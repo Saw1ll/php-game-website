@@ -10,13 +10,13 @@ if (!isset($_SESSION["playcount"])) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["playerguess"])) {
-        $playerguess = intval($_POST["playerguess"]);
+        $playerguess = intval(value: $_POST["playerguess"]);
 
         if (!isset($_SESSION["last_guess"]) || $_SESSION["last_guess"] !== $playerguess) {
             $_SESSION["last_guess"] = $playerguess;
             $_SESSION["playcount"]++;
 
-            $outcome = rand(1, 10);
+            $outcome = rand(min: 1, max: 10);
             $_SESSION["outcome"] = $outcome;
             if ($playerguess < 1 || $playerguess > 10) {
                 echo '<div class="message_error">Invalid input, please enter a number between one and ten in a numerical format</div>';
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         // Redirect to prevent form resubmission on page refresh
-        header("Location: {$_SERVER["PHP_SELF"]}");
+        header(header: "Location: {$_SERVER["PHP_SELF"]}");
         exit();
     }
     // Reset button logic
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["guess_high"] = 0;
         $_SESSION["guess_low"] = 0;
         $_SESSION["roundpercent"] = 0;
-        header("Location: {$_SERVER["PHP_SELF"]}");
+        header(header: "Location: {$_SERVER["PHP_SELF"]}");
         exit();
     }
 }
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             you win!</p>
     </div>
     <div class="form__input" ?>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form method="post" action="<?php echo htmlspecialchars(string: $_SERVER["PHP_SELF"]); ?>">
             <label for="playerguess">Make your guess (1-10)</label>
             <input type="number" name="playerguess" placeholder="Guess a Number" min="1" max="10" required>
             <input type="submit" value="Guess!" class="btn btn-primary">
@@ -88,13 +88,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php
         echo '<p class="stats__text">Play Count: {$_SESSION["playcount"]}</p>';
         ?>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form method="post" action="<?php echo htmlspecialchars(string: $_SERVER["PHP_SELF"]); ?>">
             <input type="submit" name="resetPlayCount" value="Reset playcount" class="btn btn-secondary">
         </form>
         <?php
         if ($_SESSION["playcount"] > 0) {
             $percent_correct = ($_SESSION["correctguesses"] / $_SESSION["playcount"]) * 100;
-            $_SESSION["roundpercent"] = round($percent_correct, 2);
+            $_SESSION["roundpercent"] = round(num: $percent_correct, precision: 2);
             echo "<p class='stats__text'>Correct Guesses: {$_SESSION["correctguesses"]}</p>";
             echo "<p class='stats__text'>Guesses above the computer: {$_SESSION["guess_high"]}</p>";
             echo "<p class='stats__text'>Guesses below the computer: {$_SESSION["guess_low"]}</p>";

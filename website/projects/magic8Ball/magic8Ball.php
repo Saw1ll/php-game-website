@@ -21,7 +21,7 @@
         </p>
     </div>
     <div class="form">
-        <form method='post' action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+        <form method='post' action="<?php echo htmlspecialchars(string: $_SERVER['PHP_SELF']); ?>">
             <textarea type="text" name="question" minlength='5' maxlength='255' required
                 placeholder='Ask your question here!'></textarea>
             <input type="submit" value='Submit Question' class='btn btn-primary'>
@@ -37,7 +37,7 @@ function magic8Ball()
     if (!$_POST['question']) {
         return null;
     } else {
-        $outcome = rand(0, 17);
+        $outcome = rand(min: 0, max: 17);
         switch ($outcome) {
             case 0:
                 echo "<div class='outcome__text'>Certainly so.</div>";

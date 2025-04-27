@@ -1,6 +1,6 @@
 <?php
 
-function generateCardItem($src, $text, $label, $path)
+function generateCardItem($src, $text, $label, $path): string
 {
     return '
         <li class="cards__item">

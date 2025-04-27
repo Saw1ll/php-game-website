@@ -28,7 +28,7 @@
         global $data_array;
         $data_array = $_SESSION['data_array'];
         if (
-            isset($_POST['information']) && $_POST['information'] !== "no" && in_array($_POST['information'], [
+            isset($_POST['information']) && $_POST['information'] !== "no" && in_array(needle: $_POST['information'], haystack: [
                 'gender',
                 'address',
                 'email',
@@ -47,14 +47,14 @@
             if ($information === "gender") {
                 for ($i = 0; $i < $amount; $i++) {
                     $full_name = $data_array['results'][$i]['name']['title'] . " " . $data_array['results'][$i]['name']['first'] . " " . $data_array['results'][$i]['name']['last'];
-                    echo "<div class='information'><p>", $full_name . "'s gender is " . ucfirst($data_array['results'][$i]['gender']), "</p></div>";
+                    echo "<div class='information'><p>", $full_name . "'s gender is " . ucfirst(string: $data_array['results'][$i]['gender']), "</p></div>";
                 }
             }
             // Address
             if ($information === "address") {
                 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['addressChoice'])) {
                     $addressChoice = $_POST['addressChoice'];
-                    echo "<div class='choice'>Address Choice: " . ucfirst($addressChoice) . "</div>";
+                    echo "<div class='choice'>Address Choice: " . ucfirst(string: $addressChoice) . "</div>";
 
                     foreach ($data_array['results'] as $result) {
                         $full_name = $result['name']['title'] . " " . $result['name']['first'] . " " . $result['name']['last'];
@@ -80,7 +80,7 @@
                 } else {
                     // displays form
                     ?>
-                    <form method='post' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" required>
+                    <form method='post' action="<?php echo htmlspecialchars(string: $_SERVER["PHP_SELF"]); ?>" required>
                         <input type="hidden" name="information" value="address">
                         <label for='addressChoice'>Select Address Information</label>
                         <select name='addressChoice'>
@@ -109,8 +109,8 @@
                     $full_name = $data_array['results'][$i]['name']['title'] . " " . $data_array['results'][$i]['name']['first'] . " " . $data_array['results'][$i]['name']['last'];
                     $dob = $data_array['results'][$i]['dob']['date'];
                     $age = $data_array['results'][$i]['dob']['age'];
-                    $dobTimestamp = strtotime($dob);
-                    $formattedDob = date('d F Y', $dobTimestamp);
+                    $dobTimestamp = strtotime(datetime: $dob);
+                    $formattedDob = date(format: 'd F Y', timestamp: $dobTimestamp);
                     echo "<div class='information'><p>" . $full_name . "'s date of birth is " . $formattedDob . " meaning they are " . $age . " years old." . "</p></div>";
                 }
             }

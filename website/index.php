@@ -2,15 +2,15 @@
 // if user login isn't cached, user will be sent to login screen
 session_start();
 if (!isset($_SESSION['user'])) {
-    header("Location: comps/loginRegistration/pages/login.php");
+    header(header: "Location: comps/loginRegistration/pages/login.php");
 }
-function generateCards($cardData)
+function generateCards($cardData): string
 {
     $cardsHTML = '';
 
 
     foreach ($cardData as $card) {
-        $cardsHTML .= generateCardItem($card['src'], $card['text'], $card['label'], $card['path']);
+        $cardsHTML .= generateCardItem(src: $card['src'], text: $card['text'], label: $card['label'], path: $card['path']);
     }
 
     return $cardsHTML;
@@ -20,10 +20,10 @@ require_once 'comps/cards/cardItem.php';
 
 // 1st Row
 require_once 'comps/cards/cards/1stRow.php';
-$cards1HTML = generateCards($cards1);
+$cards1HTML = generateCards(cardData: $cards1);
 
 require_once 'comps/cards/cards/2ndRow.php';
-$cards2HTML = generateCards($cards2);
+$cards2HTML = generateCards(cardData: $cards2);
 ?>
 <!DOCTYPE html>
 <html lang="en">

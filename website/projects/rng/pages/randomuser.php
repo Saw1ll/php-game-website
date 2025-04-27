@@ -3,7 +3,7 @@ if (isset($_POST['nationality']) && isset($_POST['amount'])) {
   session_start();
   $_SESSION['current_url'] = $_SERVER['REQUEST_URI'];
 } else {
-  header("Location: ../index.php");
+  header(header: "Location: ../index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -38,20 +38,20 @@ if (isset($_POST['nationality']) && isset($_POST['amount'])) {
     $nationalities = ['algerian', 'ag', 'american', 'us', 'australian', 'au', 'brazilian', 'br', 'canadian', 'ca', 'danish', 'da', 'dutch', 'nl', 'finnish', 'fi', 'french', 'fr', 'german', 'de', 'british', 'gb', 'irish', 'ie', 'new zealander', 'nz', 'spanish', 'es', 'swiss', 'ch', 'turkish', 'tr'];
     if ($nationality != "no") {
       if (
-        strlen($nationality) === 2 && in_array($nationality, $nationalities)
+        strlen(string: $nationality) === 2 && in_array(needle: $nationality, haystack: $nationalities)
       ) {
-        echo "<div class='heading'><p>Random names generated from the nationality: " . strtoupper($nationality) . "</p></div>";
+        echo "<div class='heading'><p>Random names generated from the nationality: " . strtoupper(string: $nationality) . "</p></div>";
       } elseif (
-        strlen($nationality) != 2 && in_array($nationality, $nationalities)
+        strlen(string: $nationality) != 2 && in_array(needle: $nationality, haystack: $nationalities)
       ) {
-        echo "<div class='heading'><p>Random names generated from the nationality: " . ucfirst($nationality) . "</p></div>";
+        echo "<div class='heading'><p>Random names generated from the nationality: " . ucfirst(string: $nationality) . "</p></div>";
       }
     } else {
       echo "<div class='heading'><p>Random names generated: </p></div>";
     }
 
-    $user_response = file_get_contents("https://randomuser.me/api/?nat=$nationality&results=$amount&format=json");
-    $data_array = json_decode($user_response, true);
+    $user_response = file_get_contents(filename: "https://randomuser.me/api/?nat=$nationality&results=$amount&format=json");
+    $data_array = json_decode($user_response, associative: true);
     $_SESSION['data_array'] = $data_array;
     ?>
     <div class="names_container">
